@@ -4,22 +4,19 @@ Created on Fri Nov 25 23:00:31 2022
 
 @author: ANGEL CAMILO
 """
- #Creacion TXT 
-
 
 # Variables
 
 archivo = open("Prueba.txt","w")
-Bandera = 0 # Entra y sale de la seccion horarios
-Bandera2 = 0 # Entrar y salir del While
-Bandera3 = 0 # los espacios
+Bandera = 0 # Enter and exit the schedules section
+Bandera2 = 0 # Enter and exit the While
+
 cont = 0
 Otro = ""
+
 BanderaH1 = 0
 BanderaH2 = 0
-BanderaH3 = 0
-BanderaH4 = 0
-BanderaH5 = 0
+
 Horario1 = False
 Horario2 = False
 Horario3 = False
@@ -27,19 +24,18 @@ Horario4 = False
 Horario5 = False
 
 
-# Listas
+# Lists
 empleados = ["",]
 horas = []
 frecuencia = {}
 
 
-
-#================================ Logica a efectuar ===============================
+#================================ Logic to implement ===============================
 
 while Bandera2 == 0:
     
     
-    empleado = input("Introduce nombre del empleado ")
+    empleado = input("Enter the name of the employees ")
     cont += 1
     empleados.append(empleado)
     archivo.write(empleado)
@@ -48,39 +44,39 @@ while Bandera2 == 0:
             
         
     if empleado:
-        print("A continuacion debe ingrezará la frecuencia de asistencia del empleado conteniendo horas y dias\n")
-        print("Introduzca de la siguiente manera EJ : MO10:00-12:00 Donde MO es lunes")
+        print("Next you must enter the frequency of attendance of the employee containing hours and days\n")
+        print("Enter as follows EJ : MO10:00-12:00 Where MO is Monday")
         Bandera = 1
         
     if Bandera == 1: 
-        print("ingrese frecuencia del empleado")
-        Horario1 = input("Ingrese primer dia y hora ")
+        print("enter employee frequency")
+        Horario1 = input("Enter first day and time ")
         archivo.write(Horario1)
                 
     if (Horario1 or BanderaH1 == 1) and empleado:    
-        Horario2 = input("ingrese segundo dia y hora ")
+        Horario2 = input("enter second day and time ")
         archivo.write("," + Horario2) 
         
     if Horario2 == False and empleado:
         BanderaH2 = 1          
                 
-    if empleado: #Horario2 or Horario2 == False
-        Horario3 = input("ingrese tercer dia  y hora ")
+    if empleado: 
+        Horario3 = input("enter third day and time ")
         archivo.write("," + Horario3)
         
 
     if empleado:
-       Horario4 = input("ingrese cuarto dia y hora ")
+       Horario4 = input("enter fourth day and time ")
        archivo.write("," + Horario4)
        
     if empleado:
-       Horario5 = input("ingrese quinto dia y hora ")
+       Horario5 = input("enter fifth day and time ")
        archivo.write("," + Horario5 + "\n")
     
     print("\n")
-    print (" Introducira otro empleado? Responda con la siguiente sintaxis si o no ")
+    print ("Introduce another employee... Answer with the following syntax yes or no ")
     
-    Otro = input("Respuesta ")
+    Otro = input("Answer ")
     print("\n")
 
     if Otro == "no":
@@ -94,7 +90,8 @@ while Bandera2 == 0:
         horas.append(Horario5)
         
     print(" \n")
-    print("A continuacion se observara el numero de horas que se repiten entre los empleados: \n")
+    print("The following shows the number of hours that are repeated among the employees: ")
+    print("Example:'MO10:00-12:00': n where n is the number of times it is repeated\n")
     
     if cont >= 2: 
         for n in horas : 
@@ -102,26 +99,11 @@ while Bandera2 == 0:
                 frecuencia[n] += 1 
             else: 
                 frecuencia[n]=1
-                
-        print(empleados[cont-1] + "-" + empleados[cont] + " = " + str(frecuencia))
+        empleados[cont]= empleados[cont]+ "-" + empleados[cont-1]
+        print(empleados[cont] + " = " + str(frecuencia))
+        
 
 archivo.close()
-
-
-
-#empleados que se repiten
-
-# print(" \n")
-# print("A continuacion se observara el numero de horas que se repiten entre los empleados: \n")
-
-# if cont >= 1: 
-#     for n in horas : 
-#         if n in frecuencia: 
-#             frecuencia[n] += 1 
-#         else: 
-#             frecuencia[n]=1
-            
-#     print(empleados[cont-1] + "-" + empleados[cont] + " = " + str(frecuencia))
 
 
         
